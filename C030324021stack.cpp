@@ -22,7 +22,18 @@ bool isFull(){
 }
 
 void display(){
-
+    if(!isEmpty()){
+        cout << "Data Tersimpan : " <<endl;
+        for(int a = 0; a < top; a++){
+            cout << a+1 << " . " << data[a] << endl;
+        }
+    }else {
+        cout << "Data Tidak Tesimpan ! " << endl;
+    }
+    if(isFull()){
+        cout << "Stack Penuh" << endl;
+    }
+    cout << endl;
 }
 
 void push(){
@@ -35,17 +46,28 @@ void push(){
     }
 }
 
+void pop(){
+    if(isEmpty()){
+        top--;
+    }
+}
+
 int main (){
     int pil; 
     string isi;
 
     stack :
+        system("cls");
         cout << "Menu Utama\n1. Push\n1. Pop\nPilih :";
         cin >> pil;
     
     if(pil == 1){
-        cout << "Push";
+        system("cls");
+        push();
+        goto stack;
     } else if(pil == 2){
-        cout << "Pop";
+        pop();
+        goto stack;
     }
+    cout << "Program Selesai";
 }
