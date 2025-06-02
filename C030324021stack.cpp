@@ -5,37 +5,33 @@ using namespace std;
 string data[max];
 int top = 0;
 
+// Mengecek apakah stack kosong
 bool isEmpty(){
-    if(top == 0){
-        return true;
-    }else{
-        return false;
-    }
+    return (top == 0);
 }
 
+// Mengecek apakah stack penuh
 bool isFull(){
-    if(top >= max){
-        return true;
-    }else{
-        return false;
-    }
+    return (top >= max);
 }
 
+// Menampilkan isi stack
 void display(){
     if(!isEmpty()){
-        cout << "Data Tersimpan : " <<endl;
+        cout << "\nData Tersimpan: " << endl;
         for(int a = 0; a < top; a++){
             cout << a+1 << " . " << data[a] << endl;
         }
-    }else {
-        cout << "Data Tidak Tesimpan ! " << endl;
+    } else {
+        cout << "Stack kosong!\n";
     }
     if(isFull()){
-        cout << "Stack Penuh" << endl;
+        cout << "Stack Penuh\n";
     }
     cout << endl;
 }
 
+// Menambahkan data ke stack
 void push(){
     if(!isFull()){
         cout << "Masukkan Data: ";
@@ -46,28 +42,36 @@ void push(){
     }
 }
 
+// Menghapus data dari stack
 void pop(){
-    if(isEmpty()){
+    if(!isEmpty()){
         top--;
+        cout << "Data '" << data[top] << "' telah dihapus.\n";
+    } else {
+        cout << "Stack kosong, tidak bisa melakukan Pop!\n";
     }
 }
 
-int main (){
-    int pil; 
-    string isi;
-
-    stack :
-        system("cls");
-        cout << "Menu Utama\n1. Push\n1. Pop\nPilih :";
-        cin >> pil;
+int main(){
+    int pil;
     
-    if(pil == 1){
+    while(true) {  // Looping menu agar berulang
         system("cls");
-        push();
-        goto stack;
-    } else if(pil == 2){
-        pop();
-        goto stack;
+        cout << "Menu Utama\n1. Push\n2. Pop\n3. Tampilkan Stack\n4. Keluar\nPilih : ";
+        cin >> pil;
+
+        if(pil == 1){
+            system("cls");
+            push();
+        } else if(pil == 2){
+            pop();
+        } else if(pil == 3){
+            display();
+        } else if(pil == 4){
+            cout << "Program selesai.\n";
+            break;
+        } else {
+            cout << "Pilihan tidak valid!\n";
+        }
     }
-    cout << "Program Selesai";
 }
